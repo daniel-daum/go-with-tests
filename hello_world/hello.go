@@ -2,11 +2,14 @@ package helloworld
 
 import "fmt"
 
-func Hello() string {
-	return "Hello, world!"
-}
-<<<<<<< Updated upstream:hello.go
-=======
+const (
+	spanish = "Spanish"
+	french  = "French"
+
+	helloEnglishPrefix = "Hello, "
+	helloSpanishPrefix = "Hola, "
+	helloFrenchPrefix  = "Bonjour, "
+)
 
 func greetingPrefix(language string) (prefix string) {
 	switch language {
@@ -20,7 +23,15 @@ func greetingPrefix(language string) (prefix string) {
 	return prefix
 }
 
->>>>>>> Stashed changes:hello_world/hello.go
+func Hello(name string, language string) (greeting string) {
+
+	if name == "" {
+		name = "World"
+	}
+
+	return greetingPrefix(language) + name
+}
+
 func main() {
-	fmt.Println(Hello())
+	fmt.Println(Hello("Chris", "English"))
 }
